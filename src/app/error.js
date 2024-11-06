@@ -9,7 +9,7 @@ export default function GlobalError ( { reset } ) {
         <h1 className="text-4xl font-bold text-error mb-4">Naughty Naughty you probably should log in</h1>
         <button onClick={() => reset()} className="btn btn-primary">
           Try again
-        </button>}
+        </button>
       </div>
     </div>
   );
