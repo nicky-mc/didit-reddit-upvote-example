@@ -1,14 +1,18 @@
+// auth.js
 import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
+import GitHubProvider from "next-auth/providers/github";
 import PostgresAdapter from "@auth/pg-adapter";
 import { db } from "./db";
 
-export const { auth, handlers, signOut, signIn } = NextAuth({
+export const authOptions = {
   adapter: PostgresAdapter(db),
-  providers: [GitHub({
-    clientId: process.env.AUTH_GITHUB_ID,
-    clientSecret: process.env.AUTH_GITHUB_SECRET,
-  })],
+  providers: [
+    GitHubProvider({
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
+    }),
+  ],
+  secret: process.env.AUTH_SECRET,
   trustHost: true,
   callbacks: {
     session: async ({ session, user }) => {
@@ -16,4 +20,6 @@ export const { auth, handlers, signOut, signIn } = NextAuth({
       return session;
     },
   },
-});
+};
+
+export default NextAuth(authOptions);
