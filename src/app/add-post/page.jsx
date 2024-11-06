@@ -53,9 +53,6 @@ export default async function Home() {
           Submit post
         </button>
       </form>
-      <div className="mt-4">
-        <LogoutButton />
-      </div>
     </div>
   );
 }
