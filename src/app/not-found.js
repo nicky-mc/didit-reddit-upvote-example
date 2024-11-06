@@ -7,7 +7,7 @@ export default function Custom404() {
         Oops! The page you are looking for does not exist.
       </p>
       <Link href="/" className="bg-pink-300 text-black px-4 py-2 rounded">
-        Return Home
+        Return Home it`&apos;safer there
       </Link>
     </div>
   );
