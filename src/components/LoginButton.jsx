@@ -1,14 +1,14 @@
-import { signIn } from "@/auth";
+import { signIn } from "next-auth/react";
 
 export function LoginButton() {
-  async function handleLogin() {
-    "use server";
-    await signIn();
+  async function handleLogin(event) {
+    event.preventDefault();
+    await signIn("github");
   }
 
   return (
-    <form action={handleLogin} className="inline">
-      <button className="bg-pink-300 text-black px-3 py-2 rounded">
+    <form onSubmit={handleLogin} className="inline">
+      <button type="submit" className="bg-pink-300 text-black px-3 py-2 rounded">
         Login
       </button>
     </form>
