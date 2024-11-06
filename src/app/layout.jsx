@@ -4,7 +4,6 @@ import "./globals.css";
 import Link from "next/link";
 import { Providers } from "@/Providers";
 import Head from "next/head";
-import { useSession } from "next-auth/react"; // Assuming you're using NextAuth for user sessions
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,8 +13,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const { data: session } = useSession(); // Get the session data
-
   return (
     <html lang="en">
       <Head>
@@ -24,39 +21,21 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={inter.className}>
         <Providers>
-          <header className="border-b border-gray-300 p-4 flex items-center shadow-md sticky top-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white backdrop-blur-md z-50">
-            <Link href="/" className="text-2xl font-bold hover:underline">
+          <header className="border-b border-zinc-200 p-4 flex items-center shadow-lg sticky top-0 bg-white bg-opacity-65 backdrop-blur-sm">
+            <Link href="/" className="text-xl">
               Didit
             </Link>
             <Link
               href="/add-post"
-              className="ml-10 bg-white text-purple-700 px-4 py-2 rounded-md hover:bg-opacity-90 shadow-md"
+              className="ml-10 hover:bg-zinc-300 p-2 rounded bg-pink-300 text-black"
             >
-              Add Post
+              Add post
             </Link>
-            <Link
-              href="/explore"
-              className="ml-4 bg-white text-purple-700 px-4 py-2 rounded-md hover:bg-opacity-90 shadow-md"
-            >
-              Explore
-            </Link>
-
-            {session?.user && (
-              <Link
-                href={`/profile/${session.user.id}`}
-                className="ml-4 bg-white text-purple-700 px-4 py-2 rounded-md hover:bg-opacity-90 shadow-md"
-              >
-                My Profile
-              </Link>
-            )}
-
             <div className="ml-auto">
               <UserInfo />
             </div>
           </header>
-          <main className="max-w-screen-xl lg:mx-auto bg-gray-100 p-6 rounded-lg shadow-sm">
-            {children}
-          </main>
+          <main className="max-w-screen-xl lg:mx-auto">{children}</main>
         </Providers>
       </body>
     </html>
