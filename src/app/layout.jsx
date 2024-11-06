@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import { UserInfo } from "../components/UserInfo";
-
 import "./globals.css";
 import Link from "next/link";
 import { Providers } from "@/Providers";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,13 +12,13 @@ export const metadata = {
   description: "A social app like Reddit or Hacker News",
 };
 
-export default async function RootLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-      </head>
+      </Head>
       <body className={inter.className}>
         <Providers>
           <header className="border-b border-zinc-200 p-4 flex items-center shadow-lg sticky top-0 bg-white bg-opacity-65 backdrop-blur-sm">

@@ -28,7 +28,8 @@ export default async function SinglePostPage({ params }) {
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{post.title} - Didit</title>
+        <meta name="description" content={post.body.substring(0, 160)} />
       </Head>
       <div className="max-w-screen-lg mx-auto pt-4 pr-4">
         <div className="flex space-x-6">
