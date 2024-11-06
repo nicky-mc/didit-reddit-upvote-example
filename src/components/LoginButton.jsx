@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react";
+import { signIn } from "@/auth";
 
 export function LoginButton() {
   async function handleLogin(event) {
