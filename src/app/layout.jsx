@@ -14,28 +14,30 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </Head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-base-100`}>
         <Providers>
-          <header className="border-b border-zinc-200 p-4 flex items-center shadow-lg sticky top-0 bg-white bg-opacity-65 backdrop-blur-sm">
-            <Link href="/" className="text-xl">
-              Didit
-            </Link>
-            <Link
-              href="/add-post"
-              className="ml-10 hover:bg-zinc-300 p-2 rounded bg-pink-300 text-black"
-            >
-              Add post
-            </Link>
-            <div className="ml-auto">
+          <header className="navbar bg-base-300 shadow-lg sticky top-0 z-50">
+            <div className="flex-1">
+              <Link href="/" className="btn btn-ghost normal-case text-xl">
+                Didit
+              </Link>
+            </div>
+            <div className="flex-none">
+              <Link
+                href="/add-post"
+                className="btn btn-primary mr-4"
+              >
+                Add Post
+              </Link>
               <UserInfo />
             </div>
           </header>
-          <main className="max-w-screen-xl lg:mx-auto">{children}</main>
+          <main className="container mx-auto p-4">{children}</main>
         </Providers>
       </body>
     </html>
