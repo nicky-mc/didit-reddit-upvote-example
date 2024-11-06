@@ -24,13 +24,17 @@ export default function RootLayout({ children }) {
           <header className="navbar bg-base-300 shadow-lg sticky top-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
               {/* Left Section */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center">
                 <Link href="/" className="btn btn-ghost normal-case text-xl">
                   Didit
                 </Link>
+              </div>
+
+              {/* Center Section */}
+              <div className="hidden md:flex justify-center">
                 <Link
                   href="/add-post"
-                  className="btn btn-secondary btn-sm text-lg"
+                  className="btn btn-secondary text-lg"
                 >
                   Add Post
                 </Link>
