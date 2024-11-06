@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import GitHub from "@auth/core/providers/github";
 import PostgresAdapter from "@auth/pg-adapter";
-import { db } from "./db";
+import { db } from "./db"; // Ensure this points to your db setup
 
-export const { auth, handlers, signOut, signIn } = NextAuth({
+const authOptions = {
   adapter: PostgresAdapter(db),
   providers: [
     GitHub({
@@ -25,4 +25,7 @@ export const { auth, handlers, signOut, signIn } = NextAuth({
       return session;
     },
   },
-});
+};
+
+// Export handlers for Next.js API routes
+export const handlers = NextAuth(authOptions);
