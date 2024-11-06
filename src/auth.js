@@ -8,20 +8,9 @@ export const { auth, handlers, signOut, signIn } = NextAuth({
   providers: [GitHub],
   trustHost: true,
   callbacks: {
-  session: async ({ session, token }) => {
-    session.user.id = token.id;
-    return session;
-  },
-},
-cookies: {
-  sessionToken: {
-    name: `__Secure-next-auth.session-token`,
-    options: {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      path: "/",
-      sameSite: "strict",
+    session: async ({ session, user }) => {
+      session.user.id = user.id;
+      return session;
     },
   },
-},
 });
