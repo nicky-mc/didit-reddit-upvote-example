@@ -22,19 +22,24 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-base-100`}>
         <Providers>
           <header className="navbar bg-base-300 shadow-lg sticky top-0 z-50">
-            <div className="flex-1">
-              <Link href="/" className="btn btn-ghost normal-case text-xl">
-                Didit
-              </Link>
-            </div>
-            <div className="flex-none">
-              <Link
-                href="/add-post"
-                className="btn btn-primary mr-4"
-              >
-                Add Post
-              </Link>
-              <UserInfo />
+            <div className="container mx-auto flex justify-between items-center">
+              {/* Left Section */}
+              <div className="flex items-center space-x-4">
+                <Link href="/" className="btn btn-ghost normal-case text-xl">
+                  Didit
+                </Link>
+                <Link
+                  href="/add-post"
+                  className="btn btn-primary"
+                >
+                  Add Post
+                </Link>
+              </div>
+
+              {/* Right Section */}
+              <div className="flex items-center space-x-4">
+                <UserInfo />
+              </div>
             </div>
           </header>
           <main className="container mx-auto p-4">{children}</main>
