@@ -8,6 +8,11 @@ import { LogoutButton } from "@/components/LogoutButton";
 export default async function Home() {
   const session = await auth();
 
+  if (!session) {
+    redirect("/api/auth/signin");
+    return null;
+  }
+
   async function savePost(formData) {
     "use server";
     const content = formData.get("content");
@@ -24,14 +29,6 @@ export default async function Home() {
 
     revalidatePath("/");
     redirect("/");
-  }
-
-  if (!session) {
-    return (
-      <div className="max-w-screen-lg mx-auto p-4 mt-10">
-        You need to login to create a post <LoginButton />
-      </div>
-    );
   }
 
   return (
@@ -53,6 +50,9 @@ export default async function Home() {
           Submit post
         </button>
       </form>
+      <div className="mt-4">
+        <LogoutButton />
+      </div>
     </div>
   );
 }
