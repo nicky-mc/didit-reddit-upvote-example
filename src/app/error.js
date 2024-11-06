@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function GlobalError({ error, reset }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-base-200">
-      <div className="text-center">
+      <div className="text-center flex flex-col items-center">
         <Image
           src="/naughty.jpg"
           alt="Naughty Warning"
@@ -17,7 +17,9 @@ export default function GlobalError({ error, reset }) {
         </h1>
         {error && (
           <p className="text-lg text-gray-500 mb-4">
-            {error.message || "this was not the error you were looking for."}
+            {error.message
+              ? `${error.message} - this was not the error you were looking for.`
+              : "This was not the error you were looking for."}
           </p>
         )}
         <button onClick={() => reset()} className="btn btn-primary">
