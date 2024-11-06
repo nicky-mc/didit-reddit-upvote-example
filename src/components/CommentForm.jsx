@@ -22,20 +22,21 @@ export function CommentForm({ postId, parentCommentId }) {
 
   return (
     <div className="ml-4">
-      <button onClick={() => setOpen(!isOpen)} className="text-zinc-400">
+      <button
+        onClick={() => setOpen(!isOpen)}
+        className="btn btn-link text-primary"
+      >
         {isOpen ? "Close" : "Reply"}
       </button>
       {isOpen ? (
-        <>
-          <form action={boundDispatch} className="flex flex-col space-y-3">
-            <textarea
-              name="comment"
-              className="bg-zinc-200 p-3 rounded"
-              placeholder="Type your comment..."
-            />
-            <CommentFormButton />
-          </form>
-        </>
+        <form action={boundDispatch} className="flex flex-col space-y-3 mt-3">
+          <textarea
+            name="comment"
+            className="textarea textarea-bordered w-full"
+            placeholder="Type your comment..."
+          />
+          <CommentFormButton />
+        </form>
       ) : null}
     </div>
   );

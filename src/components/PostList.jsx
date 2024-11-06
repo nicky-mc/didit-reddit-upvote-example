@@ -22,17 +22,17 @@ export async function PostList({ currentPage = 1 }) {
         {posts.map((post) => (
           <li
             key={post.id}
-            className=" py-4 flex space-x-6 hover:bg-zinc-200 rounded-lg"
+            className="py-4 flex space-x-6 bg-base-200 hover:bg-base-300 rounded-lg shadow-md"
           >
             <Vote postId={post.id} votes={post.vote_total} />
             <div>
               <Link
                 href={`/post/${post.id}`}
-                className="text-3xl hover:text-pink-500"
+                className="text-2xl font-semibold hover:text-secondary"
               >
                 {post.title}
               </Link>
-              <p className="text-zinc-700">posted by {post.name}</p>
+              <p className="text-sm text-gray-500">posted by {post.name}</p>
             </div>
           </li>
         ))}

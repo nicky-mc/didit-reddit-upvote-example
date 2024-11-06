@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
                 </Link>
                 <Link
                   href="/add-post"
-                  className="btn btn-primary"
+                  className="btn btn-secondary btn-sm text-lg"
                 >
                   Add Post
                 </Link>
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </header>
-          <main className="container mx-auto p-4">{children}</main>
+          <main className="container mx-auto p-6">{children}</main>
         </Providers>
       </body>
     </html>
